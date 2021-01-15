@@ -1,0 +1,125 @@
+body {
+    background-color: black;
+    max-width: 450px;
+    margin: auto;
+    padding-top: 100px;
+    background-color: black;
+}
+
+
+/*
+for elementor
+selector {
+    max-width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+*/
+
+// change dovn
+.vuvod__inner {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+p {
+    color: white;
+    margin: 0 0;
+}
+
+#hour,
+#min {
+    width: 100%;
+    border-radius: 0;
+}
+
+label,
+table,
+#hour-total,
+#min-total {
+    color: white;
+}
+
+.select {
+    padding-bottom: 0px;
+}
+
+.vuvod__inner {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+#min-total,
+#hour-total {
+    padding-left: 10px;
+}
+
+table {
+    margin-bottom: 10px;
+}
+
+td {
+    border: 1px solid white;
+    padding: 5px;
+}
+
+button {
+    background-color: white;
+    border: 0;
+    padding: 15px 15px;
+    border-radius: 0px;
+}
+
+textarea {
+    display: none;
+}
+
+#resetdata {
+    background-color: red;
+}
+
+#senddatabutton,
+#resetdata {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#reset {
+    width: 60%;
+    background-color: red;
+}
+
+#calculate {
+    margin-top: 5px;
+    width: 38%;
+    background-color: blue;
+    color: white;
+}
+
+#senddatabutton {
+    background-color: yellow;
+}
+
+.total-bottom {
+    display: flex;
+    justify-content: space-around;
+}
+
+#calc-min,
+#calc-oper {
+    display: flex;
+    justify-content: space-around;
+}
+
+#comment {
+    width: 100%;
+}
+
+.coment {
+    text-align: center;
+}

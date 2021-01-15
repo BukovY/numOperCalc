@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="text/JavaScript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/JavaScript" src="script.js"></script>
+</head>
+
+<body>
+    <p>Часы</p>
+    <input id="hour" type="number" value="0" /><br/>
+    <p>Минуты</p>
+    <input id="min" type="number" value="0" /><br/>
+    <p>Тип операции</p>
+    <div class="select">
+        <div class="select-line">
+            <input type="radio" id="type1" name="type3" value="tva">
+            <label for="type1">ТВА</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type2" name="type3" value="sma">
+            <label for="type2">СМА</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type3" name="type3" value="ivl">
+            <label for="type3">ИВЛ</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type4" name="type3" value="msa-sa">
+            <label for="type4">СМА + ИВЛ</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type5" name="type3" value="msa-pv">
+            <label for="type5">ПВТБ + ИВЛ</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type6" name="type3" value="msa-ea">
+            <label for="type6">ЭА + ИВЛ</label>
+        </div>
+        <div class="select-line">
+            <input type="radio" id="type7" name="type3" value="sa-ea">
+            <label for="type6">СА + ЭА + ИВЛ</label>
+        </div>
+    </div>
+    <button id="calculate">Добавить</button>
+    <button id="reset">Сбросить поле ввода</button>
+    <br/><br/>
+    <div class="vuvod">
+        <div class="vuvod__inner">
+            <p>Часы</p>
+            <div id="hour-total">0</div>
+        </div>
+        <div class="vuvod__inner">
+            <p>Минуты</p>
+            <div id="min-total">0</div>
+        </div>
+    </div>
+    <table class="vuvod__inner">
+        <tr>
+            <td>ТВА</td>
+            <td>СМА</td>
+            <td>ИВЛ</td>
+            <td>СМА + ИВЛ</td>
+            <td>ПВТБ + ИВЛ</td>
+            <td>ЭА + ИВЛ</td>
+            <td>СА + ЭА + ИВЛ</td>
+        </tr>
+        <tr>
+            <td id="tva-total">0</td>
+            <td id="sma-total">0</td>
+            <td id="ivl-total">0</td>
+            <td id="msa-sa-total">0</td>
+            <td id="msa-pv-total">0</td>
+            <td id="msa-ea-total">0</td>
+            <td id="sa-ea-total">0</td>
+        </tr>
+    </table>
+    <div class="total-bottom">
+        <div class="total-bottom-inner">
+            <p>Всего минут</p>
+            <p id="calc-min">0</p>
+        </div>
+        <div class="total-bottom-inner">
+            <p>Всего операций</p>
+            <p id="calc-oper">0</p>
+        </div>
+
+    </div>
+    <div>
+        <p class='coment'>Комментарий</p>
+        <input type="text" id='comment'>
+
+    </div>
+
+    <br>
+    <button id="resetdata">Сбросить данные</button>
+    <script type="text/JavaScript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/JavaScript" src="operscript.js"></script>
+
+
+
+    <!-- отправка -->
+    <form id="form-contact" method="POST" class="contact-form" autocomplete="off">
+        <div class="contact-form__input-wrapper contact-form__input-wrapper_name">
+            <textarea id="senddata" name="name" type="text" class="contact-form__input contact-form__input_name" tabindex="0" placeholder="Сюда попадают данные"></textarea>
+        </div>
+        <button id="senddatabutton" type="submit" class="contact-form__button">Отправить в Telegram</button>
+    </form>
+    <script type="text/javascript">
+        (function($) {
+            $(".contact-form").submit(function(event) {
+                // add data to message
+                var data;
+                var d = new Date();
+
+                var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+                data = "Комментарий: " + jQuery('#comment').val() + ". Дата отправки: " + strDate + "; Всего часов: " + jQuery('#hour-total').text() + "; минут: " + jQuery('#min-total').text() + "; Всего ТВА: " + jQuery('#tva-total').text() + "; Всего СМА: " + jQuery('#sma-total').text() + "; Всего ИВЛ: " + jQuery('#ivl-total').text() + "; Всего СМА-ИВЛ: " + jQuery('#msa-sa-total').text() + "; Всего ПВТБ-ИВЛ: " + jQuery('#msa-pv-total').text() + "; Всего ЭА-ИВЛ: " + jQuery('#msa-ea-total').text() + "; Общее количество минут: " + jQuery('#calc-min').text() + "; Общее количество операций: " + jQuery('#calc-oper').text();
+                jQuery('#senddata').html(data);
+                event.preventDefault();
+
+                // Сохраняем в переменную form id текущей формы, на которой сработало событие submit
+                let form = $('#' + $(this).attr('id'))[0];
+
+                // Сохраняем в переменную класс с параграфом для вывода сообщений
+                let message = $(this).find(".contact-form__message");
+
+                let fd = new FormData(form);
+                $.ajax({
+                    url: "https://bukovstudio.site/wp-content/uploads/script/send-message-to-telegram.php",
+                    type: "POST",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function success(res) {
+                        let respond = $.parseJSON(res);
+                        if (respond.err) {
+                            message.html(respond.err).css('color', '#d42121');
+                            setTimeout(() => {
+                                message.text('');
+                            }, 3000);
+                        } else if (respond.okSend) {
+                            message.html(respond.okSend).css('color', '#21d4bb');
+                            setTimeout(() => {
+                                message.text('');
+                            }, 3000);
+                        }
+                    },
+                });
+            });
+
+        }(jQuery));
+    </script>
+</body>
+
+</html>
