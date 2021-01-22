@@ -2,20 +2,23 @@ jQuery('document').ready(function() {
     jQuery('#calculate').on('click', function() {
         // iniciate variables
         var hour, min, hourtotal, mintotal, buffer, is60;
-        hour = jQuery('#hour').val();
-        min = jQuery('#min').val();
-        // convert to Integer
-        hour = parseInt(hour);
-        min = parseInt(min);
+        // убираем обязательность 0 на полях ввода минут и часов
+        if (jQuery('#hour').val() == '') {
+            hour = 0;
+        } else {
+            hour = parseInt(jQuery('#hour').val());
+        }
+        if (jQuery('#min').val() == '') {
+            min = 0;
+        } else {
+            min = parseInt(jQuery('#min').val());
+        }
         //calculate 
         hourtotal = parseInt(jQuery('#hour-total').text()) + hour;
         mintotal = parseInt(jQuery('#min-total').text()) + min;
         //change
         jQuery("#hour-total").html((hourtotal));
         jQuery("#min-total").html((mintotal));
-        //delte value
-        jQuery("#hour").val('');
-        jQuery("#min").val('');
         // optoin change
         // tva
         if (jQuery("#type1").is(":checked")) {
@@ -71,9 +74,9 @@ jQuery('document').ready(function() {
         }
         // calc min to hour
         if (parseInt(jQuery('#min-total').text()) > 60) {
-            if (jQuery('#hour').text() == '') {
-                jQuery("#hour").html(('0'));
-            }
+            //if (jQuery('#hour').text() == '') {
+            //    jQuery("#hour").html('0');
+            //}
             var numhour, nummin, hourrez;
             buffer = parseInt(jQuery('#min-total').text());
             nummin = buffer % 60;
@@ -91,14 +94,14 @@ jQuery('document').ready(function() {
         var numoper;
         numoper = parseInt(jQuery('#tva-total').text()) + parseInt(jQuery('#sma-total').text()) + parseInt(jQuery('#ivl-total').text()) + parseInt(jQuery('#msa-sa-total').text()) + parseInt(jQuery('#msa-pv-total').text()) + parseInt(jQuery('#msa-ea-total').text()) + parseInt(jQuery('#sa-ea-total').text());
         jQuery("#calc-oper").html((numoper));
-        // reset input number
-        jQuery('#hour').val('0');
-        jQuery('#min').val('0');
+        // сбрасываем поле ввода минут и часов
+        jQuery('#hour').val('');
+        jQuery('#min').val('');
     });
     // reset input
     jQuery('#reset').on('click', function() {
-        jQuery('#hour').val('0');
-        jQuery('#min').val('0');
+        jQuery('#hour').val('');
+        jQuery('#min').val('');
         jQuery("#type1").prop('checked', false);
         jQuery("#type2").prop('checked', false);
         jQuery("#type3").prop('checked', false);
@@ -120,7 +123,61 @@ jQuery('document').ready(function() {
         jQuery('#sa-ea-total').html('0');
         jQuery('#calc-min').html('0');
         jQuery('#calc-oper').html('0');
+        jQuery('#comment').val('');
     });
-
-
+    // button hour
+    jQuery('#hour-1').on('click', function() {
+        if (jQuery('#hour').val() >= 1) {
+            jQuery('#hour').val(jQuery('#hour').val() - 1)
+        }
+    });
+    jQuery('#hour1').on('click', function() {
+        delteZeroHour('#hour')
+        jQuery('#hour').val(parseInt(jQuery('#hour').val()) + 1)
+    });
+    jQuery('#hour2').on('click', function() {
+        delteZeroHour('#hour')
+        jQuery('#hour').val(parseInt(jQuery('#hour').val()) + 2)
+    });
+    jQuery('#hour3').on('click', function() {
+        delteZeroHour('#hour')
+        jQuery('#hour').val(parseInt(jQuery('#hour').val()) + 3)
+    });
+    jQuery('#hour4').on('click', function() {
+        delteZeroHour('#hour')
+        jQuery('#hour').val(parseInt(jQuery('#hour').val()) + 4)
+    });
+    // button min
+    jQuery('#min-1').on('click', function() {
+        delteZeroHour('#min')
+        if (jQuery('#min').val() >= 1)
+            jQuery('#min').val(parseInt(jQuery('#min').val()) - 1)
+    });
+    jQuery('#min-5').on('click', function() {
+        delteZeroHour('#min')
+        if (jQuery('#min').val() >= 5)
+            jQuery('#min').val(parseInt(jQuery('#min').val()) - 5)
+    });
+    jQuery('#min5').on('click', function() {
+        delteZeroHour('#min')
+        jQuery('#min').val(parseInt(jQuery('#min').val()) + 5)
+    });
+    jQuery('#min10').on('click', function() {
+        delteZeroHour('#min')
+        jQuery('#min').val(parseInt(jQuery('#min').val()) + 10)
+    });
+    jQuery('#min15').on('click', function() {
+        delteZeroHour('#min')
+        jQuery('#min').val(parseInt(jQuery('#min').val()) + 15)
+    });
+    jQuery('#min30').on('click', function() {
+        delteZeroHour('#min')
+        jQuery('#min').val(parseInt(jQuery('#min').val()) + 30)
+    });
 });
+
+function delteZeroHour(id) {
+    if (jQuery(id).val() == '') {
+        jQuery(id).val('0')
+    }
+}

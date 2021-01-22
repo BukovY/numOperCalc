@@ -12,9 +12,24 @@
 
 <body>
     <p>Часы</p>
-    <input id="hour" type="number" value="0" /><br/>
+    <input id="hour" type="number" value="" min="0" oninput="validity.valid||(value='');" /><br/>
+    <div class="hour-button">
+        <button id="hour-1">-1</button>
+        <button id="hour1">+1</button>
+        <button id="hour2">+2</button>
+        <button id="hour3">+3</button>
+        <button id="hour4">+4</button>
+    </div>
     <p>Минуты</p>
-    <input id="min" type="number" value="0" /><br/>
+    <input id="min" type="number" value="" min="0" /><br/>
+    <div class="min-button">
+        <button id="min-1">-1</button>
+        <button id="min-5">-5</button>
+        <button id="min5">+5</button>
+        <button id="min10">+10</button>
+        <button id="min15">+15</button>
+        <button id="min30">+30</button>
+    </div>
     <p>Тип операции</p>
     <div class="select">
         <div class="select-line">
@@ -92,14 +107,14 @@
     </div>
     <div>
         <p class='coment'>Комментарий</p>
-        <input type="text" id='comment'>
+        <input type="text" id='comment' placeholder="Введите любой комментарий">
 
     </div>
 
     <br>
     <button id="resetdata">Сбросить данные</button>
     <script type="text/JavaScript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/JavaScript" src="operscript.js"></script>
+    <!--<script type="text/JavaScript" src="operscript.js"></script>-->
 
 
 
