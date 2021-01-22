@@ -44,7 +44,8 @@ table,
 }
 
 .select {
-    padding-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .vuvod__inner {
@@ -142,4 +143,5 @@ textarea {
     border: 2px solid red;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-weight: 500;
 }
