@@ -27,7 +27,7 @@
         <button id="min-5">-5</button>
         <button id="min5">+5</button>
         <button id="min10">+10</button>
-        <button id="min15">+15</button>
+        <button id="min20">+20</button>
         <button id="min30">+30</button>
     </div>
     <p>Тип операции</p>
@@ -134,7 +134,7 @@
                 var d = new Date();
 
                 var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-                data = "Комментарий: " + jQuery('#comment').val() + ". Дата отправки: " + strDate + "; Всего часов: " + jQuery('#hour-total').text() + "; минут: " + jQuery('#min-total').text() + "; Всего ТВА: " + jQuery('#tva-total').text() + "; Всего СМА: " + jQuery('#sma-total').text() + "; Всего ИВЛ: " + jQuery('#ivl-total').text() + "; Всего СМА-ИВЛ: " + jQuery('#msa-sa-total').text() + "; Всего ПВТБ-ИВЛ: " + jQuery('#msa-pv-total').text() + "; Всего ЭА-ИВЛ: " + jQuery('#msa-ea-total').text() + "; Общее количество минут: " + jQuery('#calc-min').text() + "; Общее количество операций: " + jQuery('#calc-oper').text();
+                data = "Комментарий: " + jQuery('#comment').val() + ". Дата отправки: " + strDate + "; Всего часов: " + jQuery('#hour-total').text() + "; минут: " + jQuery('#min-total').text() + "; Всего ТВА: " + jQuery('#tva-total').text() + "; Всего СМА: " + jQuery('#sma-total').text() + "; Всего ИВЛ: " + jQuery('#ivl-total').text() + "; Всего СМА-ИВЛ: " + jQuery('#msa-sa-total').text() + "; Всего ПВТБ-ИВЛ: " + jQuery('#msa-pv-total').text() + "; Всего ЭА-ИВЛ: " + jQuery('#msa-ea-total').text() + "; Всего СА + ЭА-ИВЛ: " + jQuery('#sa-ea-total').text() + "; Общее количество минут: " + jQuery('#calc-min').text() + "; Общее количество операций: " + jQuery('#calc-oper').text();
                 jQuery('#senddata').html(data);
                 event.preventDefault();
 

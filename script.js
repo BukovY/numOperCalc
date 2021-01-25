@@ -101,8 +101,8 @@ jQuery('#min5').on('click', function() {
 jQuery('#min10').on('click', function() {
     changeVal('#min', 10)
 });
-jQuery('#min15').on('click', function() {
-    changeVal('#min', 15)
+jQuery('#min20').on('click', function() {
+    changeVal('#min', 20)
 });
 jQuery('#min30').on('click', function() {
     changeVal('#min', 30)
