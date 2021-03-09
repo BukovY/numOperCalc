@@ -4,42 +4,57 @@ jQuery('#calculate').on('click', function() {
     // убираем обязательность 0 на полях ввода минут и часов
     hour = jQuery('#hour').val() == '' ? 0 : parseInt(jQuery('#hour').val());
     min = jQuery('#min').val() == '' ? 0 : parseInt(jQuery('#min').val());
-    //calculate 
-    hourtotal = parseInt(jQuery('#hour-total').text()) + hour;
-    mintotal = parseInt(jQuery('#min-total').text()) + min;
-    //change
-    jQuery("#hour-total").html((hourtotal));
-    jQuery("#min-total").html((mintotal));
-    // optoin change
-    addTypeOper("#type1", "#tva-total"); // tva
-    addTypeOper("#type2", "#sma-total"); // sma
-    addTypeOper("#type3", "#ivl-total"); // ivl
-    addTypeOper("#type4", "#msa-sa-total"); // sma+ivl
-    addTypeOper("#type5", "#msa-pv-total"); // pvtb+ivl
-    addTypeOper("#type6", "#msa-ea-total"); // ea+ivl
-    addTypeOper("#type7", "#sa-ea-total"); // ea+ivl
-    // calc min to hour
-    if (parseInt(jQuery('#min-total').text()) > 60) {
-        var numhour, nummin, hourrez;
-        buffer = parseInt(jQuery('#min-total').text());
-        nummin = buffer % 60;
-        numhour = (buffer - buffer % 60) / 60;
-        hourrez = parseInt(jQuery('#hour-total').text()) + numhour;
 
-        jQuery("#hour-total").html((hourrez));
-        jQuery("#min-total").html((nummin));
+    // блок подсказок
+    if (hour <= 0 && min <= 0) {
+        alert('Не задано время операции');
     }
-    // calc min total
-    var calc;
-    calc = hourtotal * 60 + mintotal
-    jQuery("#calc-min").html(calc);
-    // calc total operation
-    var numoper;
-    numoper = parseInt(jQuery('#tva-total').text()) + parseInt(jQuery('#sma-total').text()) + parseInt(jQuery('#ivl-total').text()) + parseInt(jQuery('#msa-sa-total').text()) + parseInt(jQuery('#msa-pv-total').text()) + parseInt(jQuery('#msa-ea-total').text()) + parseInt(jQuery('#sa-ea-total').text());
-    jQuery("#calc-oper").html((numoper));
-    // сбрасываем поле ввода минут и часов
-    jQuery('#hour').val('');
-    jQuery('#min').val('');
+    if (!jQuery("#type1").is(":checked") && !jQuery("#type2").is(":checked") && !jQuery("#type3").is(":checked") && !jQuery("#type4").is(":checked") && !jQuery("#type5").is(":checked") && !jQuery("#type6").is(":checked") && !jQuery("#type7").is(":checked")) {
+        alert('Не выбран тип операции')
+    }
+    // запуск просчета только если заполнены данные
+    if ((hour >= 0 || min >= 0) && (jQuery("#type1").is(":checked") || jQuery("#type2").is(":checked") || jQuery("#type3").is(":checked") || jQuery("#type4").is(":checked") || jQuery("#type5").is(":checked") || jQuery("#type6").is(":checked") || jQuery("#type7").is(":checked"))) {
+        //calculate 
+        hourtotal = parseInt(jQuery('#hour-total').text()) + hour;
+        mintotal = parseInt(jQuery('#min-total').text()) + min;
+        //change
+        jQuery("#hour-total").html((hourtotal));
+        jQuery("#min-total").html((mintotal));
+        // optoin change
+        addTypeOper("#type1", "#tva-total"); // tva
+        addTypeOper("#type2", "#sma-total"); // sma
+        addTypeOper("#type3", "#ivl-total"); // ivl
+        addTypeOper("#type4", "#msa-sa-total"); // sma+ivl
+        addTypeOper("#type5", "#msa-pv-total"); // pvtb+ivl
+        addTypeOper("#type6", "#msa-ea-total"); // ea+ivl
+        addTypeOper("#type7", "#sa-ea-total"); // ea+ivl
+        // calc min to hour
+        if (parseInt(jQuery('#min-total').text()) > 60) {
+            var numhour, nummin, hourrez;
+            buffer = parseInt(jQuery('#min-total').text());
+            nummin = buffer % 60;
+            numhour = (buffer - buffer % 60) / 60;
+            hourrez = parseInt(jQuery('#hour-total').text()) + numhour;
+
+            jQuery("#hour-total").html((hourrez));
+            jQuery("#min-total").html((nummin));
+        }
+        // calc min total
+        var calc;
+        calc = hourtotal * 60 + mintotal
+        jQuery("#calc-min").html(calc);
+        // calc total operation
+        var numoper;
+        numoper = parseInt(jQuery('#tva-total').text()) + parseInt(jQuery('#sma-total').text()) + parseInt(jQuery('#ivl-total').text()) + parseInt(jQuery('#msa-sa-total').text()) + parseInt(jQuery('#msa-pv-total').text()) + parseInt(jQuery('#msa-ea-total').text()) + parseInt(jQuery('#sa-ea-total').text());
+        jQuery("#calc-oper").html((numoper));
+        // сбрасываем поле ввода минут и часов
+        jQuery('#hour').val('');
+        jQuery('#min').val('');
+
+    }
+
+
+
 });
 // reset input
 jQuery('#reset').on('click', function() {
