@@ -7,7 +7,6 @@ import { minToTime } from "../../utils/functions";
 import { ButtonsTimeDay } from "../../components/ButtonsTimeDay/ButtonsTimeDay";
 import { ButtonsOperation } from "../../components/OperationSelector/OperationSelector";
 import { TableDay } from "../../components/TableDay/TableDay";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import {
   clearField,
@@ -19,18 +18,7 @@ import DatePicker from "../../components/DatePicker/DatePicker";
 import { addDayData } from "../../redux/actions/allDay";
 import { nanoid } from "nanoid";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-    },
-  })
-);
-
 export const HomePage: FC = () => {
-  const classes = useStyles();
   const { time, selectedOperationType, operation } = useSelector(
     (state: RootState) => state.operCalc
   );
@@ -47,43 +35,52 @@ export const HomePage: FC = () => {
 
   return (
     <Box>
-      <Typography variant="body1">{minToTime(time)}</Typography>
+      <Typography variant="h3" align="center">
+        {minToTime(time)}
+      </Typography>
       <ButtonsTimeDay />
       <ButtonsOperation />
-
-      <Button
-        variant="contained"
-        color={
-          time > 0 && selectedOperationType !== "" ? "primary" : "secondary"
-        }
-        onClick={() => dispatch(addOperation())}
-      >
-        Добавить
-      </Button>
-      <Button
-        variant="contained"
-        color={
-          time !== 0 || selectedOperationType !== "" ? "primary" : "secondary"
-        }
-        onClick={() => dispatch(clearField())}
-      >
-        Сбросить поле ввода
-      </Button>
+      <br />
+      <Box display="flex" justifyContent="space-around">
+        <Button
+          variant="contained"
+          color={
+            time > 0 && selectedOperationType !== "" ? "primary" : "secondary"
+          }
+          onClick={() => dispatch(addOperation())}
+        >
+          Добавить операцию
+        </Button>
+        <Button
+          variant="contained"
+          color={
+            time !== 0 || selectedOperationType !== "" ? "primary" : "secondary"
+          }
+          onClick={() => dispatch(clearField())}
+        >
+          Сбросить поле ввода
+        </Button>
+      </Box>
       <br />
       <TableDay operation={operation} />
-      <Comment />
-      <DatePicker />
       <br />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => dispatch(clearDataDay())}
-      >
-        Сбросить данные
-      </Button>
-      <Button variant="contained" color="primary" onClick={save}>
-        Сохранить
-      </Button>
+      <Box display="flex" justifyContent="space-around">
+        <Comment />
+        <DatePicker />
+      </Box>
+      <br />
+      <Box display="flex" justifyContent="space-around">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => dispatch(clearDataDay())}
+        >
+          Сбросить данные
+        </Button>
+        <Button variant="contained" color="primary" onClick={save}>
+          Сохранить
+        </Button>
+      </Box>
     </Box>
   );
 };

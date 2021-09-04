@@ -30,7 +30,6 @@ export default function DatePicker() {
   return (
     <TextField
       value={operation.date}
-      id="date"
       label="День"
       type="date"
       defaultValue="2017-05-24"

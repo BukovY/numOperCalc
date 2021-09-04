@@ -1,7 +1,5 @@
 import Box from "@material-ui/core/Box";
 import React, { FC } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -14,7 +12,7 @@ import { minToTime } from "../../utils/functions";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 300,
   },
 });
 type TableDayType = {
