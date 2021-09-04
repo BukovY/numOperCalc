@@ -17,9 +17,21 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
 });
-export const TableDay: FC = () => {
-  const { operation } = useSelector((state: RootState) => state.operCalc);
-
+type TableDayType = {
+  operation: {
+    date: string;
+    comment: string;
+    totalTime: number;
+    tva: number;
+    sma: number;
+    ivl: number;
+    smaIvl: number;
+    eaIvl: number;
+    saEaIvl: number;
+    pvtbIvl: number;
+  };
+};
+export const TableDay: FC<TableDayType> = ({ operation }) => {
   function createData(name: string, value: any) {
     return { name, value };
   }

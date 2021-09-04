@@ -6,6 +6,7 @@ import MenuHeader from "./components/MenuHeader/MenuHeader";
 import { Route, Switch } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { CollectDay } from "./pages/CollectDay/CollectDay";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <CollectDay />
         </Route>
         <Route path="/info">
-          <h1>about</h1>
+          <About />
         </Route>
         <Route>
           <h1>Not found</h1>

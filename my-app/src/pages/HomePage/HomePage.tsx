@@ -70,7 +70,7 @@ export const HomePage: FC = () => {
         Сбросить поле ввода
       </Button>
       <br />
-      <TableDay />
+      <TableDay operation={operation} />
       <Comment />
       <DatePicker />
       <br />

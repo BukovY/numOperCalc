@@ -18,6 +18,7 @@ export default function MenuHeader() {
   return (
     <div>
       <Button
+        variant="contained"
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
@@ -31,15 +32,15 @@ export default function MenuHeader() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <NavLink to="/">Главная</NavLink>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <NavLink to="/compile">Собрать</NavLink>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <NavLink to="/info">О программе</NavLink>
-        </MenuItem>
+        <NavLink to="/">
+          <MenuItem onClick={handleClose}>Главная</MenuItem>
+        </NavLink>
+        <NavLink to="/compile">
+          <MenuItem onClick={handleClose}>Собрать</MenuItem>
+        </NavLink>
+        <NavLink to="/info">
+          <MenuItem onClick={handleClose}>О программе</MenuItem>
+        </NavLink>
       </Menu>
     </div>
   );
