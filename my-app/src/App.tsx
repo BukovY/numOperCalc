@@ -7,6 +7,8 @@ import { Route, Switch } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { CollectDay } from "./pages/CollectDay/CollectDay";
 import About from "./components/About/About";
+import Typography from "@material-ui/core/Typography";
+import { NavLink } from "react-router-dom";
 
 function App() {
   return (
@@ -23,7 +25,8 @@ function App() {
           <About />
         </Route>
         <Route>
-          <h1>Not found</h1>
+          <Typography variant="h1">Страница не найдена</Typography>
+          <NavLink to="/">Перейти на главную</NavLink>
         </Route>
       </Switch>
     </Container>
