@@ -26,6 +26,7 @@ const allDay = createSlice({
       })
       .addCase(DELETE_DAY_DATE, (state, action: any) => {
         state.data = state.data.filter((el: any) => el.id !== action.payload);
+        localStorage.setItem("operationData", JSON.stringify(state.data));
       })
       .addCase(CHECK_DAY, (state, action: any) => {
         if (state.selectedDate.length === 0) {
