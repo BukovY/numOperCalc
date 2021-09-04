@@ -5,6 +5,7 @@ import { Container } from "@material-ui/core";
 import MenuHeader from "./components/MenuHeader/MenuHeader";
 import { Route, Switch } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
+import { CollectDay } from "./pages/CollectDay/CollectDay";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/compile">
-          <h1>compile to week</h1>
+          <CollectDay />
         </Route>
         <Route path="/info">
           <h1>about</h1>

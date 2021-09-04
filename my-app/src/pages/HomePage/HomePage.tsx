@@ -15,6 +15,9 @@ import {
   clearDataDay,
 } from "../../redux/actions/operCalc";
 import Comment from "../../components/Comment/Comment";
+import DatePicker from "../../components/DatePicker/DatePicker";
+import { addDayData } from "../../redux/actions/allDay";
+import { nanoid } from "nanoid";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,6 +35,15 @@ export const HomePage: FC = () => {
     (state: RootState) => state.operCalc
   );
   const dispatch = useDispatch();
+
+  const save = () => {
+    const obgToAdd = {
+      ...operation,
+      id: nanoid(),
+    };
+    dispatch(addDayData(obgToAdd));
+    dispatch(clearDataDay());
+  };
 
   return (
     <Box>
@@ -60,6 +72,8 @@ export const HomePage: FC = () => {
       <br />
       <TableDay />
       <Comment />
+      <DatePicker />
+      <br />
       <Button
         variant="contained"
         color="primary"
@@ -67,7 +81,7 @@ export const HomePage: FC = () => {
       >
         Сбросить данные
       </Button>
-      <Button variant="contained" color="primary" disabled>
+      <Button variant="contained" color="primary" onClick={save}>
         Сохранить
       </Button>
     </Box>

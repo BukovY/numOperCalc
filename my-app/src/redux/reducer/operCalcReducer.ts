@@ -6,12 +6,14 @@ import {
   CLEAR_DATA_DAY,
   ADD_OPERATION,
   SET_COMMENT,
+  SET_DATE,
 } from "../constants";
 
 const initialState = {
   time: 0,
   selectedOperationType: "",
   operation: {
+    date: "",
     comment: "",
     totalTime: 0,
     tva: 0,
@@ -30,6 +32,9 @@ const operCalc = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(SET_DATE, (state, action: any) => {
+        state.operation.date = action.payload;
+      })
       .addCase(SET_COMMENT, (state, action: any) => {
         state.operation.comment = action.payload;
       })
@@ -52,6 +57,7 @@ const operCalc = createSlice({
       })
       .addCase(CLEAR_DATA_DAY, (state) => {
         state.operation = {
+          date: "",
           comment: "",
           totalTime: 0,
           tva: 0,

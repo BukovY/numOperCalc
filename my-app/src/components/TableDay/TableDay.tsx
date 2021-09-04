@@ -31,7 +31,18 @@ export const TableDay: FC = () => {
     createData("ЭА + ИВЛ", operation.eaIvl),
     createData("СА + ЭА + ИВЛ", operation.saEaIvl),
     createData("ПВТБ + ИВЛ", operation.pvtbIvl),
+    createData(
+      "Всего операций",
+      operation.tva +
+        operation.sma +
+        operation.ivl +
+        operation.smaIvl +
+        operation.eaIvl +
+        operation.saEaIvl +
+        operation.pvtbIvl
+    ),
     createData("Время", minToTime(operation.totalTime)),
+    createData("Время в минутах", operation.totalTime),
   ];
   const classes = useStyles();
   return (
