@@ -28,10 +28,12 @@ export default function About() {
         История версий
       </Typography>
       <Typography variant="h6" align="left">
-        The future
+        V1.1 (09-05-2021)
       </Typography>
       <Typography variant="body1" align="left">
-        Дизайн и более удобное расположение управляющих элементов
+        Мобильная адаптация, облегчена таблица с данными по дням, добавлены
+        подсказки что необходимо добавить (при нажатии на красную кнопку) в поле
+        добавления дня.
       </Typography>
       <Typography variant="h6" align="left">
         V1.0 (09-04-2021)
