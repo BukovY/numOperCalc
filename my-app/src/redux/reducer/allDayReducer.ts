@@ -7,12 +7,11 @@ import {
 } from "../constants";
 
 const prevDate = localStorage.getItem("operationData");
-const prevChecked: any = localStorage.getItem("checkedDays");
 const date: Array<any> = [];
 const selectedDate: Array<any> = [];
 const initialState = {
   data: prevDate ? JSON.parse(prevDate) : date,
-  selectedDate: prevChecked ? JSON.parse(prevChecked) : selectedDate,
+  selectedDate: selectedDate,
 };
 const allDay = createSlice({
   name: "allDay",
@@ -34,13 +33,11 @@ const allDay = createSlice({
         } else {
           state.selectedDate.push(action.payload);
         }
-        localStorage.setItem("checkedDays", JSON.stringify(state.selectedDate));
       })
       .addCase(UNCHECK_DAY, (state, action: any) => {
         state.selectedDate = state.selectedDate.filter(
           (el: any) => el !== action.payload
         );
-        localStorage.setItem("checkedDays", JSON.stringify(state.selectedDate));
       });
   },
 });

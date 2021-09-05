@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import { TableDays } from "../../components/TableDays/TableDays";
 import { TableDay } from "../../components/TableDay/TableDay";
 import Typography from "@material-ui/core/Typography";
+import { NavLink } from "react-router-dom";
 
 export const CollectDay: FC = () => {
   const { data, selectedDate } = useSelector(
@@ -41,6 +42,12 @@ export const CollectDay: FC = () => {
 
   return (
     <Box>
+      {data.length == 0 && (
+        <Typography variant="h4" align="center">
+          Нет данных для отображения, пожалуйста добавьте данные в{" "}
+          <NavLink to="/">главном окне</NavLink>
+        </Typography>
+      )}
       {data.length > 0 && (
         <Box>
           <Typography variant="h3" align="center">
@@ -50,7 +57,7 @@ export const CollectDay: FC = () => {
         </Box>
       )}
 
-      {selectedDate.length > 0 && (
+      {selectedDate.length >= 1 && (
         <Box>
           <Typography variant="h3" align="center">
             Данные суммарно
