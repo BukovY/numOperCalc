@@ -45,7 +45,15 @@ export const HomePage: FC = () => {
     if (time !== 0 && selectedOperationType !== "") {
       dispatch(addOperation());
     } else {
-      alert("Данных для добавления недостаточно");
+      if (time == 0 && selectedOperationType == "") {
+        alert("Добавь время и тип операции");
+      } else {
+        if (time !== 0) {
+          alert("Добавь тип операции");
+        } else {
+          alert("Добавь время операции");
+        }
+      }
     }
   };
 
@@ -54,6 +62,18 @@ export const HomePage: FC = () => {
       dispatch(clearField());
     } else {
       alert("Данных для сброса нет");
+    }
+  };
+
+  const clearDay = () => {
+    if (
+      operation.totalTime !== 0 ||
+      operation.date !== "" ||
+      operation.comment !== ""
+    ) {
+      dispatch(clearDataDay());
+    } else {
+      alert("Нет данных для сброса");
     }
   };
 
@@ -96,8 +116,14 @@ export const HomePage: FC = () => {
       <Box display="flex" justifyContent="space-around">
         <Button
           variant="contained"
-          onClick={() => dispatch(clearDataDay())}
-          color={operation.totalTime !== 0 ? "primary" : "secondary"}
+          onClick={clearDay}
+          color={
+            operation.totalTime !== 0 ||
+            operation.date !== "" ||
+            operation.comment !== ""
+              ? "primary"
+              : "secondary"
+          }
         >
           Сбросить данные
         </Button>
