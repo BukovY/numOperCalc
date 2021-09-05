@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
     marginTop: "10px",
     "& > *": {
       margin: theme.spacing(1),

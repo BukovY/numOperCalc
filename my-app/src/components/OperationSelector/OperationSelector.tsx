@@ -6,8 +6,24 @@ import { setOperation } from "../../redux/actions/operCalc";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import { RootState } from "../../redux/store";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "10px",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+    "@media screen and (max-width: 680px)": {
+      alignItems: "center",
+    },
+  },
+}));
 export const ButtonsOperation: FC = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const changeOperation = (num: string) => {
     dispatch(setOperation(num));
@@ -16,7 +32,7 @@ export const ButtonsOperation: FC = () => {
     (state: RootState) => state.operCalc
   );
   return (
-    <Box>
+    <Box className={classes.root}>
       <Typography variant="body1">Типы операций</Typography>
       <ButtonGroup variant="contained">
         <Button

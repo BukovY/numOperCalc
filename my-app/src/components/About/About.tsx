@@ -5,7 +5,7 @@ import React from "react";
 export default function About() {
   return (
     <Box>
-      <Typography variant="h1" align="center">
+      <Typography variant="h2" align="center">
         О программе
       </Typography>
       <Typography variant="subtitle1" align="center">
