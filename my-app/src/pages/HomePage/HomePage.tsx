@@ -25,12 +25,36 @@ export const HomePage: FC = () => {
   const dispatch = useDispatch();
 
   const save = () => {
-    const obgToAdd = {
-      ...operation,
-      id: nanoid(),
-    };
-    dispatch(addDayData(obgToAdd));
-    dispatch(clearDataDay());
+    if (operation.totalTime !== 0) {
+      if (operation.date !== "") {
+        const obgToAdd = {
+          ...operation,
+          id: nanoid(),
+        };
+        dispatch(addDayData(obgToAdd));
+        dispatch(clearDataDay());
+      } else {
+        alert("Не выбрана дата");
+      }
+    } else {
+      alert("Данных для добавления нет");
+    }
+  };
+
+  const addOper = () => {
+    if (time !== 0 && selectedOperationType !== "") {
+      dispatch(addOperation());
+    } else {
+      alert("Данных для добавления недостаточно");
+    }
+  };
+
+  const clearInputs = () => {
+    if (time !== 0 || selectedOperationType !== "") {
+      dispatch(clearField());
+    } else {
+      alert("Данных для сброса нет");
+    }
   };
 
   return (
@@ -47,7 +71,7 @@ export const HomePage: FC = () => {
           color={
             time > 0 && selectedOperationType !== "" ? "primary" : "secondary"
           }
-          onClick={() => dispatch(addOperation())}
+          onClick={addOper}
         >
           Добавить операцию
         </Button>
@@ -56,7 +80,7 @@ export const HomePage: FC = () => {
           color={
             time !== 0 || selectedOperationType !== "" ? "primary" : "secondary"
           }
-          onClick={() => dispatch(clearField())}
+          onClick={clearInputs}
         >
           Сбросить поле ввода
         </Button>
@@ -72,12 +96,20 @@ export const HomePage: FC = () => {
       <Box display="flex" justifyContent="space-around">
         <Button
           variant="contained"
-          color="primary"
           onClick={() => dispatch(clearDataDay())}
+          color={operation.totalTime !== 0 ? "primary" : "secondary"}
         >
           Сбросить данные
         </Button>
-        <Button variant="contained" color="primary" onClick={save}>
+        <Button
+          variant="contained"
+          onClick={save}
+          color={
+            operation.totalTime !== 0 && operation.date !== ""
+              ? "primary"
+              : "secondary"
+          }
+        >
           Сохранить
         </Button>
       </Box>
