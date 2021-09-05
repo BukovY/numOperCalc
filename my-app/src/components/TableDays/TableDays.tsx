@@ -25,20 +25,13 @@ export const TableDays: FC<TableDaysType> = ({ data }) => {
       {data.length > 0 && (
         <table className={s.table}>
           <tr>
-            <td>Отметить</td>
-            <td>День</td>
-            <td>Комментарий</td>
-            <td>ТВА</td>
-            <td>СМА</td>
-            <td>ИВЛ</td>
-            <td>СМА + ИВЛ</td>
-            <td>ЭА + ИВЛ</td>
-            <td>СА + ЭА + ИВЛ</td>
-            <td>ПВТБ + ИВЛ</td>
-            <td>Всего операций</td>
-            <td>Время</td>
-            <td>Время в минутах</td>
-            <td>Удалить</td>
+            <td>&#9989;</td>
+            <td>📅</td>
+            <td>&#9998;</td>
+            <td>📈</td>
+            <td>🕒</td>
+            <td>⌛</td>
+            <td>❌</td>
           </tr>
           {data.map((i) => (
             <tr>
@@ -51,13 +44,6 @@ export const TableDays: FC<TableDaysType> = ({ data }) => {
               </td>
               <td>{i.date}</td>
               <td>{i.comment}</td>
-              <td>{i.tva}</td>
-              <td>{i.sma}</td>
-              <td>{i.ivl}</td>
-              <td>{i.smaIvl}</td>
-              <td>{i.eaIvl}</td>
-              <td>{i.saEaIvl}</td>
-              <td>{i.pvtbIvl}</td>
               <td>
                 {i.tva +
                   i.sma +
@@ -71,7 +57,7 @@ export const TableDays: FC<TableDaysType> = ({ data }) => {
               <td>{i.totalTime}</td>
               <td>
                 <button onClick={() => dispatch(deleteDayDate(i.id))}>
-                  Удалить
+                  &#10060;
                 </button>
               </td>
             </tr>

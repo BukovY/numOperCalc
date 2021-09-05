@@ -8,17 +8,14 @@ import { setTime } from "../../redux/actions/operCalc";
 import Typography from "@material-ui/core/Typography";
 import { RootState } from "../../redux/store";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     marginTop: "10px",
     "& > *": {
-      margin: theme.spacing(1),
-    },
-    "@media screen and (max-width: 680px)": {
-      alignItems: "center",
+      margin: "5px",
     },
   },
 }));
