@@ -51,7 +51,8 @@ export const TableDays: FC<TableDaysType> = ({ data }) => {
                   i.smaIvl +
                   i.eaIvl +
                   i.saEaIvl +
-                  i.pvtbIvl}
+                  i.pvtbIvl +
+                  (i.pvaSmaIvl ? i.pvaSmaIvl : 0)}
               </td>
               <td>{minToTime(i.totalTime)}</td>
               <td>{i.totalTime}</td>

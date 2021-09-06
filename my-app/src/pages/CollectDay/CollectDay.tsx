@@ -23,7 +23,9 @@ export const CollectDay: FC = () => {
     eaIvl: 0,
     saEaIvl: 0,
     pvtbIvl: 0,
+    pvaSmaIvl: 0,
   };
+  console.log(data);
   if (selectedDate.length > 0) {
     const dayToCalc = data.filter(
       (el: any) => selectedDate.indexOf(el.id) !== -1
@@ -37,6 +39,7 @@ export const CollectDay: FC = () => {
       operation.eaIvl += i.eaIvl;
       operation.saEaIvl += i.saEaIvl;
       operation.pvtbIvl += i.pvtbIvl;
+      operation.pvaSmaIvl += i.pvaSmaIvl ? i.pvaSmaIvl : 0;
     }
   }
 

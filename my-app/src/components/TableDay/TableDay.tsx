@@ -27,6 +27,7 @@ type TableDayType = {
     eaIvl: number;
     saEaIvl: number;
     pvtbIvl: number;
+    pvaSmaIvl: number;
   };
 };
 export const TableDay: FC<TableDayType> = ({ operation }) => {
@@ -39,6 +40,7 @@ export const TableDay: FC<TableDayType> = ({ operation }) => {
     createData("ИВЛ", operation.ivl),
     createData("СМА + ИВЛ", operation.smaIvl),
     createData("ЭА + ИВЛ", operation.eaIvl),
+    createData("ПВА + СМА + ИВЛ", operation.pvaSmaIvl),
     createData("СА + ЭА + ИВЛ", operation.saEaIvl),
     createData("ПВТБ + ИВЛ", operation.pvtbIvl),
     createData(
@@ -49,7 +51,8 @@ export const TableDay: FC<TableDayType> = ({ operation }) => {
         operation.smaIvl +
         operation.eaIvl +
         operation.saEaIvl +
-        operation.pvtbIvl
+        operation.pvtbIvl +
+        operation.pvaSmaIvl
     ),
     createData("Время", minToTime(operation.totalTime)),
     createData("Время в минутах", operation.totalTime),

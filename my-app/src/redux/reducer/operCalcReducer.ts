@@ -23,6 +23,7 @@ const initialState = {
     eaIvl: 0,
     saEaIvl: 0,
     pvtbIvl: 0,
+    pvaSmaIvl: 0,
   },
 };
 
@@ -67,6 +68,7 @@ const operCalc = createSlice({
           eaIvl: 0,
           saEaIvl: 0,
           pvtbIvl: 0,
+          pvaSmaIvl: 0,
         };
       })
       .addCase(ADD_OPERATION, (state) => {
@@ -93,6 +95,9 @@ const operCalc = createSlice({
               break;
             case "pvtbIvl":
               state.operation.pvtbIvl += 1;
+              break;
+            case "pvaSmaIvl":
+              state.operation.pvaSmaIvl += 1;
               break;
           }
           state.time = 0;

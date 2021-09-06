@@ -65,6 +65,14 @@ export const ButtonsOperation: FC = () => {
         >
           ЭА + ИВЛ
         </Button>
+      </ButtonGroup>
+      <ButtonGroup variant="contained">
+        <Button
+          color={selectedOperationType === "pvaSmaIvl" ? "primary" : "default"}
+          onClick={() => changeOperation("pvaSmaIvl")}
+        >
+          ПВА + СМА + ИВЛ
+        </Button>
         <Button
           color={selectedOperationType === "saEaIvl" ? "primary" : "default"}
           onClick={() => changeOperation("saEaIvl")}
